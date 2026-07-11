@@ -55,6 +55,11 @@
           <li><a href="index.html#features">Features</a></li>
           <li><a href="index.html#services">Services</a></li>
           <li><a href="index.html#pricing">Pricing</a></li>
+          {% if user.is.authenticated %}
+            <li><a href="{% url 'logout'%}">logout</a></li>
+          {% else %}
+            <li><a href="{% url 'login'%}">login</a></li>
+          {% endif %}
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -84,8 +89,8 @@
 
   <main class="main">
 
-    {%block content%}
-    {%endblock content%}
+    {% block content %}
+    {% endblock content %}
 
   </main>
 
