@@ -48,42 +48,52 @@
         <h1 class="sitename">QuickStart</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu">
+<nav id="navmenu" class="navmenu">
+  <ul>
+    <li><a href="#hero" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+
+    {% if user.is_authenticated %}
+      <li class="dropdown">
+        <a href="#">
+          <span>{{ user.username }}</span>
+          <i class="bi bi-chevron-down toggle-dropdown"></i>
+        </a>
+
         <ul>
-          <li><a href="index.html#hero" class="active">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          {% if user.is_authenticated %}
-            <li>
-              <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" style="background:none; border:none; padding:0; color:inherit; cursor:pointer;">Logout</button>
-              </form>
-            </li>
-          {% else %}
-            <li><a href="{% url 'login'%}">login</a></li>
-            <li><a href="{% url 'signup'%}">Sign Up</a></li>
-          {% endif %}
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
+          <li>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="dropdown-item border-0 bg-transparent">
+                Logout
+              </button>
+            </form>
           </li>
-          <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+      </li>
+
+    {% else %}
+
+      <li class="dropdown">
+        <a href="#">
+          <span>User</span>
+          <i class="bi bi-chevron-down toggle-dropdown"></i>
+        </a>
+
+        <ul>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        </ul>
+      </li>
+
+    {% endif %}
+
+    <li><a href="#contact">Contact</a></li>
+
+  </ul>
+
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
 
       <a class="btn-getstarted" href="index.html#about">Get Started</a>
 
