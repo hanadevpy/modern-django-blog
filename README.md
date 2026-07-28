@@ -12,6 +12,20 @@ A modern blog application built with Django and Bootstrap 5.
 - Image upload for posts
 - Responsive design using Bootstrap 5
 
+## Screenshots
+
+### Home Page
+
+![Home](screenshots/home.png)
+
+### Blog Page
+
+![Blog](screenshots/blog.png)
+
+### Post Detail
+
+![Post](screenshots/post-detail.png)
+
 ## Technologies
 
 - Python
