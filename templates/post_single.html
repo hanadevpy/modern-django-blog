@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+    <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1>{{ object.title }}</h1>
+
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="current">{{ object.title }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10">
+
+                {% if object.photo %}
+                <img src="{{ object.photo.url }}"
+                    class="img-fluid rounded shadow mb-4 w-100"
+                    alt="{{ object.title }}">
+                {% endif %}
+
+                <div class="mb-4">
+
+                    <span class="badge bg-primary">
+                        {{ object.author }}
+                    </span>
+
+                    <span class="text-muted ms-3">
+                        {{ object.date }}
+                    </span>
+
+                </div>
+
+                <h2 class="mb-3">
+                    {{ object.title }}
+                </h2>
+
+                <p class="lead">
+                    {{ object.excerpt }}
+                </p>
+
+                <hr>
+
+                <div class="blog-content">
+
+                    {{ object.body|linebreaks }}
+
+                </div>
+
+                <hr class="my-5">
+
+                <a href="{% url 'home' %}" class="btn btn-outline-primary">
+
+                    ← Back to Blog
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
